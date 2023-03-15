@@ -10,6 +10,8 @@ stopBtn.addEventListener('click', onStopBtnClick);
 
 function onStartBtnClick() {
   changeColor();
+  startBtn.disabled = true;
+  stopBtn.disabled = false;
 }
 
 function changeColor() {
@@ -23,6 +25,8 @@ function changeColor() {
 }
 
 function onStopBtnClick() {
+  startBtn.disabled = false;
+  stopBtn.disabled = true;
   colorStart = false;
   clearInterval(intervalForColor);
   //   bodyEL.style.backgroundColor = '#ffffff';
