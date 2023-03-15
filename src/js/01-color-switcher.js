@@ -4,6 +4,7 @@ const bodyEL = document.querySelector('body');
 
 let intervalForColor = null;
 let colorStart = false;
+stopBtn.disabled = true;
 
 startBtn.addEventListener('click', onStartBtnClick);
 stopBtn.addEventListener('click', onStopBtnClick);
