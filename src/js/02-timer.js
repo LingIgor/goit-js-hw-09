@@ -28,6 +28,7 @@ const options = {
     if (futereDate < startDate) {
       startBtn.setAttribute('disabled', 'true');
       Notiflix.Notify.init({
+        position: 'center-top',
         warning: {
           background: 'yellow',
           textColor: 'red',
