@@ -44,12 +44,14 @@ flatpickr(inputEl, options);
 startBtn.addEventListener('click', onStartBtnClick);
 
 function onStartBtnClick() {
+  startBtn.setAttribute('disabled', 'true');
   const timerId = setInterval(() => {
     const currentTime = Date.now();
     const deltaTime = futereDate - currentTime;
     // console.log(deltaTime);
 
     if (deltaTime < 900) {
+      startBtn.setAttribute('disabled', 'true');
       clearInterval(timerId);
     }
     const textTime = convertMs(deltaTime);
