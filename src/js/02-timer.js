@@ -24,6 +24,7 @@ divElAll.forEach(
 const startDate = Date.now();
 let futereDate = 0;
 let colorStart = false;
+let intervalForColor = null;
 
 startBtn.setAttribute('disabled', 'true');
 
@@ -62,6 +63,7 @@ function onStartBtnClick() {
     // console.log(deltaTime);
 
     if (deltaTime < 900) {
+      clearInterval(intervalForColor);
       startBtn.setAttribute('disabled', 'true');
       clearInterval(timerId);
     }
@@ -107,7 +109,7 @@ function changeColor() {
     return;
   }
   colorStart = true;
-  setInterval(() => {
+  intervalForColor = setInterval(() => {
     divEl.style.color = getRandomHexColor();
   }, 1000);
 }
