@@ -107,7 +107,7 @@ function changeColor() {
     return;
   }
   colorStart = true;
-  intervalForColor = setInterval(() => {
+  const intervalForColor = setInterval(() => {
     divEl.style.color = getRandomHexColor();
   }, 1000);
 }
