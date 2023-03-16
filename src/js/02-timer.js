@@ -13,7 +13,7 @@ const divElAll = divEl.querySelectorAll('.field');
 console.log(divElAll);
 
 divEl.style.cssText =
-  'font-size: 30px; display: flex; justify-content: space-around;';
+  'font-size: 30px; display: flex; justify-content: space-around; margin-top: 100px;';
 
 divElAll.forEach(
   e =>
