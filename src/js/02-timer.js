@@ -8,9 +8,22 @@ const elementDay = document.querySelector('[data-days]');
 const elementHour = document.querySelector('[data-hours]');
 const elementMinute = document.querySelector('[data-minutes]');
 const elementSecond = document.querySelector('[data-seconds]');
+const divEl = document.querySelector('.timer');
+const divElAll = divEl.querySelectorAll('.field');
+console.log(divElAll);
+
+divEl.style.cssText =
+  'font-size: 30px; display: flex; justify-content: space-around;';
+
+divElAll.forEach(
+  e =>
+    (e.style.cssText =
+      'display: flex; flex-direction: column; align-items: center;')
+);
 
 const startDate = Date.now();
 let futereDate = 0;
+let colorStart = false;
 
 startBtn.setAttribute('disabled', 'true');
 
@@ -21,10 +34,7 @@ const options = {
   minuteIncrement: 1,
   onClose(selectedDates) {
     startBtn.removeAttribute('disabled');
-    // console.log(selectedDates[0]);
     futereDate = selectedDates[0].getTime();
-    // console.log(timeOfInput);
-    // startBtn.setAttribute('disabled', 'true');
     if (futereDate < startDate) {
       startBtn.setAttribute('disabled', 'true');
       Notiflix.Notify.init({
@@ -45,6 +55,7 @@ startBtn.addEventListener('click', onStartBtnClick);
 
 function onStartBtnClick() {
   startBtn.setAttribute('disabled', 'true');
+  changeColor();
   const timerId = setInterval(() => {
     const currentTime = Date.now();
     const deltaTime = futereDate - currentTime;
@@ -85,4 +96,18 @@ function convertMs(ms) {
 
 function addLeadingZero(value) {
   return String(value).padStart(2, '0');
+}
+
+function getRandomHexColor() {
+  return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+}
+
+function changeColor() {
+  if (colorStart) {
+    return;
+  }
+  colorStart = true;
+  intervalForColor = setInterval(() => {
+    divEl.style.color = getRandomHexColor();
+  }, 1000);
 }
